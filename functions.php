@@ -50,7 +50,8 @@ function wil_mar_setup() {
 	register_nav_menus(
 		array(
 			'menu-1' => esc_html__( 'Primary', 'wil-mar' ),
-		)
+			'menu-2' => esc_html__( 'Footer', 'wil-mar' ),
+			)
 	);
 
 	/*
@@ -193,3 +194,16 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+// Filter the output of logo to fix Googles Error about itemprop logo
+add_filter( 'get_custom_logo', 'change_html_custom_logo' );
+function change_html_custom_logo() {
+    $custom_logo_id = get_theme_mod( 'custom_logo' );
+	$site_name = get_bloginfo( 'name' );
+    $html = sprintf( '<a href="%1$s" class="custom-logo-link" rel="home" title="'.$site_name.'" >%2$s</a>',
+            esc_url( home_url( '/' ) ),
+            wp_get_attachment_image( $custom_logo_id, 'full', false, array(
+                'class'    => 'custom-logo',
+            ) )
+        );
+    return $html;   
+}

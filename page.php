@@ -16,7 +16,27 @@ get_header();
 ?>
 
 	<main id="primary" class="site-main">
+		<section class="inner-banner">
+			<div class="inner-banner-img bg-img" style="background-image: url('<?php echo home_url(); ?>/wp-content/uploads/2022/07/main-banner.jpg');"></div>
+			<div class="sec-wp">
+				<div class="container">
+					<div class="sec-wp">
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="inner-banner-content white-text">
+									<h1 class="h1-title wow fadeup-animation" data-wow-duration="0.8s" data-wow-delay="0.1s"><?php the_title(); ?></h1>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 
+		<div class="sample-page-content">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
 		<?php
 		while ( have_posts() ) :
 			the_post();
@@ -30,9 +50,11 @@ get_header();
 
 		endwhile; // End of the loop.
 		?>
-
+	</div>
+			</div>
+		</div>
+	</div>
 	</main><!-- #main -->
 
 <?php
-get_sidebar();
 get_footer();
