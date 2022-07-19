@@ -16,8 +16,7 @@ get_header();
 ?>
 
 	<main id="primary" class="site-main">
-		<section class="inner-banner">
-			<div class="inner-banner-img bg-img" style="background-image: url('<?php echo home_url(); ?>/wp-content/uploads/2022/07/main-banner.jpg');"></div>
+		<section class="inner-banner bg-img" style="background-image: url('<?php echo home_url(); ?>/wp-content/uploads/2022/07/contact-banner.jpg');">
 			<div class="sec-wp">
 				<div class="container">
 					<div class="sec-wp">

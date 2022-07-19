@@ -49,23 +49,23 @@ jQuery(document).ready(function($) {
 
 
 
-    jQuery('.plans-slider').slick({
-        slidesToShow: 4,
+    jQuery('.brands-slider').slick({
+        slidesToShow: 6,
         slidesToScroll: 1,
         infinite: true,
-        dots: true,
-        arrows: true,
+        dots: false,
+        arrows: false,
         autoplay: true,
         autoplaySpeed: 2000,
-        prevArrow: '<button class="slide-arrow prev-arrow"><i class="fa fa-angle-left" aria-hidden="true"></i></button>',
-        nextArrow: '<button class="slide-arrow next-arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></button>',
+        rows:0,
+        swipeToSlide:true,
         responsive: [{
                 breakpoint: 992,
                 settings: {
                     slidesToShow: 2,
                     slidesToScroll: 2,
                     infinite: true,
-                    dots: true,
+                    dots: false,
                 }
             },
             {
@@ -74,7 +74,7 @@ jQuery(document).ready(function($) {
                     slidesToShow: 1,
                     slidesToScroll: 1,
                     infinite: true,
-                    dots: true,
+                    dots: false,
                 }
             }
         ]

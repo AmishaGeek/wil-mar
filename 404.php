@@ -9,8 +9,7 @@
 
 get_header();
 ?>
-<section class="inner-banner inner-banner-page">
-    <div class="inner-banner-img bg-img" style="background-image: url('<?php echo home_url(); ?>/wp-content/uploads/2022/07/main-banner.jpg');"></div>
+<section class="inner-banner bg-img" style="background-image: url('<?php echo home_url(); ?>/wp-content/uploads/2022/07/contact-banner.jpg');">
     <div class="sec-wp">
         <div class="container">
             <div class="row">
@@ -27,7 +26,7 @@ get_header();
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
-				<img width="424" height="353" src="<?php echo home_url(); ?>/wp-content/themes/turner-diesel/assets/images/404.svg" alt="Error">
+				<img width="424" height="353" src="<?php echo home_url(); ?>/wp-content/themes/wil-mar/assets/images/404.svg" alt="Error">
 			</div>
 		</div>
 	</div>

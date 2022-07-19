@@ -41,18 +41,24 @@
 							<div class="contact-link">
 								<ul>
 									<li>
-										<a href="javascript:void(0);" title="105 Littlefoot Ln. Madisonville, KY 42431" target="_blank">
-											<span><img width="20" height="20" src="<?php echo home_url(); ?>/wp-content/themes/wil-mar/assets/images/map.svg" alt="Map"></span> 105 Littlefoot Ln. Madisonville, KY 42431
+										<a href="<?php the_field('address_link','option'); ?>" title="<?php the_field('address','option'); ?>" target="_blank">
+											<span><img width="20" height="20" src="<?php echo home_url(); ?>/wp-content/themes/wil-mar/assets/images/map.svg" alt="Map"></span> <?php the_field('address','option'); ?>
 										</a>
 									</li>
 									<li>
-										<a href="tel:wilmarhydraulics@outlook.com" title="wilmarhydraulics@outlook.com" target="_blank">
-											<span><img width="20" height="13" src="<?php echo home_url(); ?>/wp-content/themes/wil-mar/assets/images/email.svg" alt="Email"></span> wilmarhydraulics@outlook.com
+										<a href="mailto:<?php the_field('email','option'); ?>" title="<?php the_field('email','option'); ?>" target="_blank">
+											<span><img width="20" height="13" src="<?php echo home_url(); ?>/wp-content/themes/wil-mar/assets/images/email.svg" alt="Email"></span> <?php the_field('email','option'); ?>
 										</a>
 									</li>
 									<li>
-										<a href="tel:2703228654" title="(270) 322-8654" class="header-call">
-											<span class="call-icon"> <img width="14" height="14" src="<?php echo home_url(); ?>/wp-content/themes/wil-mar/assets/images/call.svg" alt="Phone"></span> <span class="callus"> (270) 322-8654 </span>
+									<?php
+										$phone = get_field('phone', 'option');
+										$val = array("(", ")", " ", "-", ".");
+										$replace = array("", "", "", "", "");
+										$phone_link = str_replace($val, $replace, $phone);
+									?>
+										<a href="tel:<?php echo $phone_link; ?>" title="<?php echo $phone; ?>" class="header-call">
+											<span class="call-icon"> <img width="14" height="14" src="<?php echo home_url(); ?>/wp-content/themes/wil-mar/assets/images/call.svg" alt="Phone"></span> <span class="callus"> <?php echo $phone; ?> </span>
 										</a>
 									</li>
 								</ul>
