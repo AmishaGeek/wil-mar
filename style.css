@@ -1467,11 +1467,6 @@ a:hover {
     display: none;
 }
 
-.container {
-    position: relative;
-    z-index: 5;
-}
-
 .play-btn {
     width: 60px;
     height: 60px;
@@ -2353,7 +2348,7 @@ button.close:hover {
 }
 
 .our-service-sec .h2-title {
-    margin-bottom: 77px;
+    margin-bottom: 60px;
 }
 
 .service-row {
@@ -2366,11 +2361,11 @@ button.close:hover {
     background: var(--primary-color) !important;
 }
 
-.service-list li:last-child .service-row {
+.service-list .service-row:last-child {
     margin-bottom: 0;
 }
 
-.service-row.even {
+.service-row {
     padding-top: 17px;
 }
 
@@ -2429,6 +2424,7 @@ button.close:hover {
     text-overflow: ellipsis;
     -webkit-line-clamp: 4;
     overflow: hidden;
+    margin-bottom: 23px;
 }
 
 a.more-info {
@@ -2460,7 +2456,7 @@ a.more-info:hover .icon {
     position: relative;
     background-color: #242424;
     background-blend-mode: luminosity;
-    padding: 74px 0 82px;
+    padding: 75px 0 82px;
 }
 
 .additional-service-sec::before {
@@ -2475,7 +2471,7 @@ a.more-info:hover .icon {
 }
 
 .additional-service-content {
-    padding-right: 10px;
+    padding-right: 20px;
 }
 
 .additional-service-content .h2-title {
@@ -2786,7 +2782,7 @@ a.more-info:hover .icon {
 
 .service-details-sec {
     position: relative;
-    padding: 90px 0 80px;
+    padding: 90px 0 83px;
 }
 
 .service-text {
@@ -2997,6 +2993,7 @@ a.more-info:hover .icon {
 .entry-content a,
 .entry-content p a,
 .entry-content a {
+    word-break: break-word;
     transition: .3s;
     color: var(--primary-color);
 }
@@ -3044,7 +3041,7 @@ a.more-info:hover .icon {
     font-size: 24px;
     line-height: 30px;
     text-transform: capitalize;
-    color: var(--dark-color);
+    color: var(--white-color);
 }
 
 .thank-text p a {
@@ -3588,6 +3585,13 @@ a.prev.page-numbers {
     .container {
         max-width: 1400px;
     }
+    p {
+        font-size: 18px;
+    }
+    .main-navigation a,
+    .contact-link li a {
+        font-size: 16px;
+    }
 }
 
 @media screen and (max-width: 1499px) {
@@ -3609,19 +3613,32 @@ a.prev.page-numbers {
         padding: 0;
     }
     .about-sec::before {
-        right: calc(100% - 585px);
+        right: calc(100% - 465px);
+        transform: skewX(50deg);
     }
     .serve-list li {
         width: 170px;
         margin: 0 7px;
     }
+    .service-row.odd::after {
+        transform: skewX(-50deg);
+        left: calc(100% - 380px);
+    }
+    .service-row.even::before {
+        transform: skewX(50deg);
+        right: calc(100% - 400px);
+    }
     .we-serve-sec .img {
         width: 500px;
     }
+    .footer-content,
     .additional-service-list,
     .service-row.even .service-img-wp,
     .service-img-wp {
         padding: 0;
+    }
+    .contact-form {
+        padding: 0 20px 0 0;
     }
 }
 
@@ -3646,33 +3663,69 @@ a.prev.page-numbers {
     .menu-mob {
         display: block;
     }
+    .cta-btn {
+        top: auto;
+        bottom: 0;
+        right: auto;
+        left: 50%;
+        transform: translate(-50%, 0) rotate(0deg);
+    }
     .widget-area,
     .single-post .widget-area {
         margin-top: 50px;
     }
     .site-header {
+        background: var(--white-color);
         height: 80px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.06);
+        transition: .3s;
+    }
+    .site-header.sticky_head {
+        height: 70px;
+    }
+    .header-top {
+        display: none;
     }
     .site-header .container {
         max-width: 100%;
-        padding: 0 30px;
+        padding: 0;
+        height: 100%;
     }
-    .site-branding {
-        position: fixed;
+    .site-header .row {
+        margin: 0;
+        height: 100%;
+    }
+    .main-header-menu {
+        height: 100%;
+    }
+    .header-menu-box {
+        padding: 0;
+        border-radius: 0;
+        height: 100%;
+        background: 0 0;
+    }
+    .site-header .row .col-lg-2 {
+        width: auto;
+        height: 100%;
+        padding: 0;
+        position: absolute;
         top: 0;
         left: 30px;
-        width: 145px;
-        height: 80px;
+        z-index: 2;
+    }
+    .site-branding {
+        height: 100%;
+        justify-content: flex-start;
     }
     .menu-toggle {
-        position: fixed;
-        top: 25px;
+        position: absolute;
+        top: 50%;
         right: 30px;
+        transform: translate(0, -50%);
         border: none;
         outline: none !important;
         background: transparent;
         width: 40px;
-        height: 31px;
         padding: 0;
         z-index: 105;
     }
@@ -3704,9 +3757,14 @@ a.prev.page-numbers {
         position: relative;
         top: -13px;
     }
+    .main-navigation,
+    .header-menu {
+        height: 100%;
+    }
     .header-mobile-menu {
-        position: fixed;
+        position: absolute;
         top: 0;
+        left: 0;
         left: 100vw;
         width: 100vw;
         height: 100vh;
@@ -3731,29 +3789,24 @@ a.prev.page-numbers {
     .header-mobile-menu::-webkit-scrollbar-track {
         background: var(--white-color);
     }
-    .main-navigation ul {
-        text-align: left;
-        display: inline-block;
-    }
     .main-navigation ul li {
         display: block;
-        margin-left: 0;
-        font-size: 22px;
-        line-height: 28px;
-        margin-bottom: 4.4vh;
+        margin: 0 0 3vh;
     }
     .main-navigation ul li:last-child {
         margin-bottom: 0;
     }
     .main-navigation ul li a {
+        display: inline-block;
         font-size: 22px;
         line-height: 28px;
-        padding-top: 0;
-        padding-bottom: 9px;
         color: var(--white-color);
     }
+    .main-navigation ul li.menu-item-has-children>a {
+        padding: 0 30px 0 0;
+    }
     .main-navigation ul li.menu-item-has-children>a:after {
-        top: 45%;
+        font-size: 15px;
         color: var(--white-color);
     }
     .main-navigation ul li.menu-item-has-children:hover>a:after {
@@ -3778,13 +3831,211 @@ a.prev.page-numbers {
     }
     .main-navigation ul ul li {
         border-bottom: none;
-        margin-bottom: 10px;
+        margin-bottom: 2vh;
+        transition: .3s;
     }
     .main-navigation ul ul li:last-child {
         margin-bottom: 0;
     }
     .main-navigation ul ul li a {
         padding: 0;
+    }
+    .main-banner {
+        padding: 230px 0 170px;
+    }
+    .about-img-wp {
+        height: 400px;
+        margin-bottom: 56px;
+    }
+    .about-content {
+        margin: 0;
+    }
+    .about-sec::before {
+        height: 440px;
+        right: calc(100% - 300px);
+    }
+    .h2-title {
+        margin-bottom: 11px;
+    }
+    p {
+        margin-bottom: 14px;
+    }
+    .about-sec {
+        padding: 0;
+    }
+    .we-serve-sec {
+        padding: 62px 0 67px;
+    }
+    .serve-list li {
+        width: 30%;
+        margin: 0 0 4px;
+    }
+    .serve-list {
+        text-align: center;
+    }
+    .servce-content {
+        margin-bottom: 32px;
+    }
+    .we-serve-sec .img {
+        width: 400px;
+        top: 0;
+    }
+    .our-service-sec .h2-title {
+        margin-bottom: 29px;
+    }
+    .service-details-sec .service-img-wp,
+    .service-img-wp {
+        height: 400px;
+        margin-bottom: 16px;
+    }
+    .service-content p {
+        height: auto;
+        -webkit-line-clamp: unset;
+        overflow: visible;
+        text-overflow: unset;
+        margin-bottom: 12px;
+    }
+    .service-row.odd::after {
+        transform: skewX(-50deg);
+        left: calc(100% - 290px);
+        height: 440px;
+        top: -20px;
+    }
+    .h3-title {
+        font-size: 26px;
+        line-height: 48px;
+        margin-bottom: 7px;
+    }
+    .service-details-sec .service-row,
+    .service-row {
+        padding: 0;
+        margin-bottom: 30px;
+    }
+    .service-row.even::before {
+        top: -20px;
+        height: 440px;
+        right: calc(100% - 290px);
+    }
+    .service-row {
+        padding: 0;
+    }
+    .our-service-sec {
+        padding: 0 0 70px;
+    }
+    .additional-service-sec {
+        padding: 69px 0 76px;
+    }
+    .additional-service-content .h2-title {
+        margin-bottom: 10px;
+    }
+    .additional-service-content {
+        padding: 0;
+        margin-bottom: 17px;
+    }
+    .additional-service-list h4 {
+        font-size: 24px;
+        line-height: 30px;
+        margin-bottom: 20px;
+    }
+    .brand-sec {
+        padding: 81px 0 52px;
+    }
+    .hiring-sec {
+        padding: 69px 0 80px;
+    }
+    .top-footer {
+        padding: 80px 0;
+    }
+    .footer-logo {
+        margin-bottom: 22px;
+    }
+    .footer-text {
+        margin-bottom: 14px;
+    }
+    .contact-link li {
+        justify-content: center;
+    }
+    .footer-contact-link .contact-link li:last-child {
+        margin: 22px 0 0;
+    }
+    .contact-link li a {
+        display: block;
+    }
+    .footer-content {
+        margin-bottom: 16px;
+        text-align: center;
+    }
+    .contact-form {
+        text-align: center;
+        padding: 0;
+    }
+    .submit-btn {
+        text-align: center;
+    }
+    .wpcf7 .wpcf7-spinner {
+        left: 50%;
+        margin: 0 0 0 100px;
+    }
+    .hiring-text {
+        width: auto;
+        margin: 0 auto 24px;
+    }
+    .hiring-content .h2-title {
+        margin-bottom: 11px;
+    }
+    .hiring-sec {
+        padding: 48px 0 60px;
+    }
+    .top-footer {
+        padding: 60px 0;
+    }
+    .inner-banner {
+        padding: 167px 0 38px;
+    }
+    .service-details-sec {
+        padding: 71px 0 73px;
+    }
+    .service-details-sec .service-content {
+        margin: 0;
+    }
+    .service-text {
+        margin-bottom: 33px;
+    }
+    .career-sec {
+        padding: 69px 0 80px;
+    }
+    .career-content .h2-title {
+        margin-bottom: 10px;
+    }
+    .career-content p {
+        width: 100%;
+        margin: 0 0 23px;
+    }
+    .contact-sec {
+        padding: 77px 0 80px;
+    }
+    .contact-content {
+        padding: 0;
+        margin-bottom: 12px;
+        text-align: center;
+    }
+    .contact-content h4 {
+        margin-bottom: 16px;
+    }
+    .contact-content p {
+        margin-bottom: 16px;
+    }
+    .contact-content .contact-link li:first-child {
+        margin-bottom: 11px;
+    }
+    .contact-sec .contact-form .h2-title {
+        margin-bottom: 19px;
+    }
+    .contact-form .h3-title {
+        margin-bottom: 15px;
+    }
+    .bottom-footer {
+        padding: 32px 0 55px;
     }
 }
 
@@ -3800,6 +4051,38 @@ a.prev.page-numbers {
         max-width: unset;
         width: calc(100vw - 60px);
     }
+    .serve-list li {
+        width: 45%;
+    }
+    .service-details-sec .service-img-wp,
+    .service-img-wp,
+    .about-img-wp {
+        height: 350px;
+    }
+    .copyright li:first-child {
+        display: block;
+        margin: 0 0 9px;
+    }
+    .copyright li:nth-child(2) a {
+        border-left: 0;
+        padding: 0;
+        margin: 0;
+    }
+    .footer-menu {
+        margin-bottom: 18px;
+    }
+    .about-sec::before {
+        height: 390px;
+        right: calc(100% - 270px);
+    }
+    .service-row.odd::after {
+        left: calc(100% - 260px);
+        height: 385px;
+    }
+    .service-row.even::before {
+        height: 385px;
+        right: calc(100% - 260px);
+    }
 }
 
 @media screen and (max-width: 575px) {
@@ -3809,6 +4092,10 @@ a.prev.page-numbers {
     .thank-text:before {
         width: 57px;
         height: 61px;
+    }
+    .error-404,
+    .inner-page-text {
+        padding: 50px 0;
     }
     .container,
     .container-fluid {
@@ -3832,12 +4119,112 @@ a.prev.page-numbers {
     .page-numbers li {
         margin-bottom: 10px;
     }
+    .h1-title {
+        font-size: 46px;
+        line-height: 58px;
+        margin-bottom: 32px;
+    }
+    .h2-title {
+        font-size: 36px;
+        line-height: 48px;
+    }
+    .h3-title {
+        font-size: 22px;
+        line-height: 44px;
+    }
+    .banner-btn .sec-btn {
+        display: flex;
+    }
+    .banner-btn .sec-btn+.sec-btn {
+        margin: 20px 0 0;
+    }
+    .main-banner {
+        padding: 190px 0 180px;
+    }
+    .service-details-sec .service-img-wp,
+    .service-img-wp,
+    .about-img-wp {
+        height: 300px;
+    }
+    .about-sec::before {
+        height: 350px;
+        right: calc(100% - 180px);
+        top: -20px;
+        transform: skewX(40deg);
+    }
+    .about-img-wp {
+        margin-bottom: 49px;
+    }
+    .we-serve-sec {
+        padding: 42px 0 45px;
+    }
+    .serve-list li {
+        height: 170px;
+    }
+    .service-row.odd::after {
+        left: calc(100% - 160px);
+        height: 335px;
+        transform: skewX(-40deg);
+    }
+    .service-row.even::before {
+        height: 335px;
+        right: calc(100% - 160px);
+        transform: skewX(40deg);
+    }
+    .our-service-sec {
+        padding: 0 0 50px;
+    }
+    .additional-service-sec {
+        padding: 48px 0 57px;
+    }
+    .brand-sec {
+        padding: 60px 0 32px;
+    }
+    .footer-menu li {
+        display: block;
+        margin: 0 0 8px;
+    }
+    .copyright li {
+        display: block;
+        margin-bottom: 9px;
+    }
+    .copyright li a {
+        border: 0;
+        padding: 0;
+        margin: 0;
+    }
+    .copyright p a {
+        display: block;
+        margin: -7px 0 0;
+    }
+    .serve-list li {
+        width: 100%;
+        margin: 0 0 15px;
+    }
+    .serve-list li:last-child {
+        margin: 0;
+    }
+    .inner-banner {
+        padding: 157px 0 45px;
+    }
+    .service-details-sec {
+        padding: 52px 0 50px;
+    }
+    .career-sec {
+        padding: 49px 0 60px;
+    }
+    .contact-sec .contact-form textarea.form-input,
+    .career-content textarea.form-input {
+        height: 120px;
+    }
+    .contact-sec {
+        padding: 57px 0 60px;
+    }
 }
 
 @media screen and (max-width: 400px) {
     .container,
-    .container-fluid,
-    .site-header .container {
+    .container-fluid {
         padding: 0 15px;
     }
     .modal-dialog {
@@ -3862,7 +4249,10 @@ a.prev.page-numbers {
         padding: 15px;
     }
     .form-element i {
-        right: 10px;
+        right: 15px;
+    }
+    .header-mobile-menu {
+        padding: 16.3vh 20px 30px 20px;
     }
     .popup-title {
         padding: 10px 65px 10px 15px;
@@ -3870,6 +4260,33 @@ a.prev.page-numbers {
     .common-popup-text {
         padding: 20px 15px !important;
         max-height: 75vh;
+    }
+    .site-header .row .col-lg-2 {
+        left: 15px;
+    }
+    .h1-title {
+        font-size: 42px;
+        line-height: 54px;
+    }
+    .h2-title {
+        font-size: 32px;
+        line-height: 44px;
+    }
+    .service-details-sec .service-img-wp,
+    .service-img-wp,
+    .about-img-wp {
+        height: 280px;
+    }
+    .about-sec::before {
+        height: 320px;
+    }
+    .service-row.odd::after {
+        left: calc(100% - 145px);
+        height: 315px;
+    }
+    .service-row.even::before {
+        right: calc(100% - 145px);
+        height: 315px;
     }
 }
 
